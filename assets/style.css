@@ -30,3 +30,8 @@ main {
 .text-box > main {
     margin-left: 0%;
 }
+
+p {
+    display: flex;
+    align-content: center;
+}
