@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+}
+header {
+    margin:0;
+    justify-content: center;
+    padding: 1.625rem;
+    text-align: center;
+    font-size: 300%;
+}
+
+main {
+    float: right;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-size: 200%;
+    
+}
+
+.text-box {
+    float: left;
+    margin-left: 0%;
+    width: 20%;
+    border: 1px;
+}
+
+.text-box > main {
+    margin-left: 0%;
+}
