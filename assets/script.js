@@ -1,8 +1,9 @@
 var forecast = document.getElementById ("weatherTable");
-var FetchBtn = document.getElementById ("btn");
-
-function getApi() {
-    var grabUrl = 'api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid={API key}';
+var fetchBtn = document.getElementById ("btn");
+debugger
+var getWeather = function(city) {
+    var grabUrl = 'api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
+    var APIkey = "195afc894ee5fa544eb826395ad34cb5"
 
     fetch(grabUrl)
     .then(function(response) {
@@ -10,7 +11,7 @@ function getApi() {
     })
     .then(function(data) {
         console.log(data)
-
+debugger
         for(var i=0; i<data.length; i++) {
 
             var weatherRow = document.createElement('wr');
@@ -26,13 +27,16 @@ function getApi() {
         }
     });
 }
+$(fetchBtn.addEventListener("click",function(event) {
+  event.preventDefault();
 
-$(function() {
+
+
     $(".submit").on("click",function() {
-        var city = ($(this).siblings(".input").val())
-        var stuff = ($(this).parent("id"))
+        var city = $(this).siblings(".input").val()
+        var name = $(this).parent().attr("id")
 
-        localStorage.setItem(stuff,city)
+        localStorage.setItem(name,city)
     })
 
     function displayStorage() {
@@ -42,4 +46,5 @@ $(function() {
     }
     displayStorage()
 
-})
+    
+}))
