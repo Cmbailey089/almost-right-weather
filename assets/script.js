@@ -1,17 +1,20 @@
 var forecast = document.getElementById ("weatherTable");
 var fetchBtn = document.getElementById ("btn");
-debugger
-var getWeather = function(city) {
-    var grabUrl = 'api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
-    var APIkey = "195afc894ee5fa544eb826395ad34cb5"
 
+var getWeather = function(city) {
+    console.log(city)
+    var APIkey = "195afc894ee5fa544eb826395ad34cb5"
+    var grabUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
+   
+console.log(grabUrl)
     fetch(grabUrl)
+    
     .then(function(response) {
         return response.json();
     })
     .then(function(data) {
         console.log(data)
-debugger
+console.log(data.length)
         for(var i=0; i<data.length; i++) {
 
             var weatherRow = document.createElement('wr');
@@ -33,18 +36,25 @@ $(fetchBtn.addEventListener("click",function(event) {
 
 
     $(".submit").on("click",function() {
-        var city = $(this).siblings(".input").val()
+        var searchField = $(this).siblings($("#id"))
+        var city = searchField.val()
+getWeather(city)
         var name = $(this).parent().attr("id")
-
+console.log(city)
         localStorage.setItem(name,city)
     })
 
-    function displayStorage() {
-        for(i=0; i < city.length; i++) {
-            $(".input").val(localStorage.getItem(".input"))
-        }
-    }
-    displayStorage()
+   
+    
 
     
-}))
+})) 
+
+function displayStorage() {
+        for(i=0; i < city.length; i++) {
+            $(".input").val(localStorage.getItem(".input"))
+            
+        }
+    }
+    
+    displayStorage()
