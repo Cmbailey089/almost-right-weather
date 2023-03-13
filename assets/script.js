@@ -1,5 +1,6 @@
-var forecast = document.getElementById ("weatherTable");
-var fetchBtn = document.getElementById ("btn");
+var forecast = document.querySelector ("#weatherTable");
+var fetchBtn = document.querySelector ("#btn");
+var lastCity = document.querySelector ("#preCity");
 
 
 var getWeather = function(city) {
@@ -10,16 +11,16 @@ var getWeather = function(city) {
 //    var tracker = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},1&limit=5&appid={API key}';
 // console.log(grabUrl)
     fetch(grabUrl)
-    
-    .then(function(response) {
+   
+      .then(function(response) {
         return response.json();
     })
-    .then(function(data) {
+ 
+      .then(function(data) {
         displayWeather(data);
-        console.log(data)
-console.log(data.length)
-        // for(var i=0; i<data.length; i++) 
-        {
+        // console.log(data)
+// console.log(data.list[0])
+        
 
            
 
@@ -34,37 +35,45 @@ console.log(data.length)
             // weatherRow.appendChild(weatherData);
             // forecast.appendChild(weatherRow);
          
-}})};
+});
 
-        var displayWeather = function (data){
-             var weatherRow = document.getElementById("weatherTable");
-            weatherRow.innerHTML=data.list[0].excerpt
-        }
+var displayWeather = function (data){         
+             var weatherRow = document.querySelector("#weatherTable");
+            weatherRow.innerHTML=data;
+        }};
 
-fetchBtn.addEventListener("click",function(event) {
+ function displayStorage () {
+   
+    var city = localStorage.getItem("city");
+
+    lastCity.textContent = city;
+//        for(var i=0; i<city.length; i++) {
+//         city.appendChild("#preCity");
+
+// }
+};
+
+fetchBtn.addEventListener('click',function(event) {
   event.preventDefault();
 
-
-
-$(".submit").on("click",function() {
-        var searchField = $(this).siblings($("#id"))
-        var city = searchField.val()
-getWeather(city)
+        var city = document.querySelector("#city").value;
+    
+getWeather(city);
         // var name = $(this).parent().attr("id")
 // console.log(city)
-        localStorage.setItem("city",city)
-    })
+        localStorage.setItem("city",city);
+        displayStorage();
+    });
 
-   });
+  
 
-var displayStorage = function(city) {
-        for(i=0; i < city; i++) {
-            (".input").val(localStorage.getItem(".input"))
+// var displayStorage = function(city) {
+//         for(i=0; i < city; i++) {
+//             (".input").val(localStorage.getItem(".input"))
 
-            var pastSelections = document.getElementById('#preCity');
-            pastSelections.innerHTML=city
+//             var pastSelections = document.getElementById('#preCity');
+//             pastSelections.innerHTML=city
             
-        }
-    }
+//         }
+//     }
 
-displayStorage()
