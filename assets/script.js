@@ -4,8 +4,8 @@ var lastCity = document.querySelector ("#preCity");
 
 
 var getWeather = function(city) {
-    // console.log(city)
     var APIkey = "195afc894ee5fa544eb826395ad34cb5"
+    var currentUrl = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIkey;
     var grabUrl = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIkey;
 //    var url = 'api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid=' +APIkey;
 //    var tracker = 'http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},1&limit=5&appid={API key}';
@@ -18,23 +18,8 @@ var getWeather = function(city) {
  
       .then(function(data) {
         displayWeather(data);
-        // console.log(data)
-// console.log(data.list[0])
-        
-
-           
-
-            // var weatherRow = document.createElement('wr');
-            // var weatherData = document.createElement('wd');
-            // var link = document.createElement('a');
-
-            // link.textContent = data[i].html_url;
-            // link.href = data[i].html_url;
-
-            // weatherData.appendChild(link);
-            // weatherRow.appendChild(weatherData);
-            // forecast.appendChild(weatherRow);
-         
+       
+         console.log(data);
 });
 
 var displayWeather = function (data){         
@@ -47,10 +32,16 @@ var displayWeather = function (data){
     var city = localStorage.getItem("city");
 
     lastCity.textContent = city;
-//        for(var i=0; i<city.length; i++) {
-//         city.appendChild("#preCity");
+       for(var i=0; i<city.length; i++) {
+        var cities = city[i];
 
-// }
+        var li = document.createElement("li");
+        li.textContent =cities;
+        li.setAttribute("data-index",i);
+
+        lastCity.appendChild("li");
+                 
+}
 };
 
 fetchBtn.addEventListener('click',function(event) {
@@ -59,21 +50,12 @@ fetchBtn.addEventListener('click',function(event) {
         var city = document.querySelector("#city").value;
     
 getWeather(city);
-        // var name = $(this).parent().attr("id")
-// console.log(city)
+      
         localStorage.setItem("city",city);
         displayStorage();
     });
 
-  
+    
 
-// var displayStorage = function(city) {
-//         for(i=0; i < city; i++) {
-//             (".input").val(localStorage.getItem(".input"))
 
-//             var pastSelections = document.getElementById('#preCity');
-//             pastSelections.innerHTML=city
-            
-//         }
-//     }
 
