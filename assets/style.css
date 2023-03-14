@@ -34,4 +34,5 @@ main {
 h2 {
     display: flex;
     align-content: center;
+    column-gap: 10px;
 }
