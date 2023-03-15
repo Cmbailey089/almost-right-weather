@@ -25,6 +25,7 @@ main {
     margin-left: 0%;
     width: 20%;
     border: 1px;
+    box-shadow: 2px 2px 2px 2px;
 }
 
 .text-box > main {
@@ -35,4 +36,22 @@ h2 {
     display: flex;
     align-content: center;
     column-gap: 10px;
+}
+
+#forCard {
+    font-size: 20px;
+
+}
+
+button[data-index] {
+    display: flex;
+    flex-direction: column;
+    border: none;
+    outline: none;
+    background: none;
+    
+}
+
+textarea {
+    
 }
